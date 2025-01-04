@@ -10,6 +10,10 @@ Currently, two official plugins are available:
 
 [1]: <https://aistudio.google.com/>
 [2]: <https://reactrouter.com/>
+[3]: <https://redux-toolkit.js.org/>
+[4]: <https://tailwindcss.com/>
 
 - [GeminiAI][1]
 - [React Router Dom][2]
+- [Redux Toolkit][3]
+- [Tailwindcss][4]
