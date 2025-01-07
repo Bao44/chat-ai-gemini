@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 import SideBar from "./components/SideBar";
 import { useEffect } from "react";
 import Gemini from "./gemini";
+import { useDispatch } from "react-redux";
 
 function App() {
 
-  useEffect(() => {
-    Gemini('JS là gì');
-  },[])
+  const dispath = useDispatch();
+  
 
   return (
     <>
