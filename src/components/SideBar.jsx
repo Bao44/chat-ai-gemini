@@ -6,10 +6,12 @@ import IconTrash from "../../assets/trash.png";
 import IconMenu from "../../assets/menu.png";
 import { useDispatch, useSelector } from "react-redux";
 import { addChat, removeChat } from "../store/chatSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideBar = ({ onToggle }) => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.chat);
+  const navigate = useNavigate();
 
   const handleNewChat = () => {
     dispatch(addChat());
@@ -17,6 +19,7 @@ const SideBar = ({ onToggle }) => {
 
   const handleRemoveChat = (id) => {
     dispatch(removeChat(id));
+    navigate("/");
   };
 
   return (
@@ -39,7 +42,7 @@ const SideBar = ({ onToggle }) => {
           <p>Gần đây:</p>
           <div className="flex flex-col space-y-6">
             {data.map((chat) => (
-              <div
+              <Link to={`/chat/${chat.id}`}
                 className="flex items-center justify-between p-4 bg-gray-700"
                 key={chat?.id}
               >
@@ -47,10 +50,13 @@ const SideBar = ({ onToggle }) => {
                   <img src={IconChat} alt="chat" className="w-8 h-8" />
                   <p>{chat.title}</p>
                 </div>
-                <button onClick={() => handleRemoveChat(chat.id)}>
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  handleRemoveChat(chat.id);
+                }}>
                   <img src={IconTrash} alt="trash" className="w-6 h-6" />
                 </button>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
