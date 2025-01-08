@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 import SideBar from "./components/SideBar";
 import { useEffect } from "react";
 import Gemini from "./gemini";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
 
-  const dispath = useDispatch();
-  
+  const dispatch = useDispatch();
+  const {data} = useSelector(state => state.chat);
 
   return (
     <>
